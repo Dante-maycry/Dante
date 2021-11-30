@@ -1,0 +1,204 @@
+最大公约数 最小公倍数
+#include <stdio.h>
+int Eight2(int m,int n);
+int main()
+{
+    int a,b;
+    scanf("%d %d",&a,&b);
+    Eight2(a,b);
+}
+int Eight2(int m,int n)
+{
+    int i;
+    int pub1,pub2;
+    int min1,max1;
+    if(m>=n) min1=n,max1=m;
+    if(m<n) min1=m,max1=n;
+    for(i=1; i<min1; i++)
+    {
+        if(max1%min1==0) pub1=min1;
+        else if(m%i==0&&n%i==0) pub1=i;
+    }
+    printf("%d ",pub1);
+    for(i=max1; i<=m*n; i++)
+    {
+        if(i%m==0&&i%n==0)
+        {
+            pub2=i;
+            break;
+        }
+    }
+    printf("%d",pub2);
+}
+
+
+数字反转
+#include <stdio.h>
+long reverse(long n);
+int main(void)
+{
+    long n;
+    while(scanf("%ld",&n)!=EOF)
+    {
+        printf("%ld\n",reverse(n));
+    }
+    return 0;
+}
+long reverse(long n)
+{
+    long t;
+    for(t=0;n;n/=10)
+        t=t*10+n%10;
+    return t;
+}
+
+
+#include <stdio.h>
+int Reverseint(int n);
+int main()
+{
+    int a;
+    scanf("%d",&a);
+    Reverseint(a);
+
+}
+
+int Reverseint(int n)
+{
+	int result = 0;
+	if(n < 0){
+		n = -n;
+		printf("-");
+	}
+
+	while(1){
+		result = n % 10;
+        printf("%d", result);
+		n = n / 10;
+		if(n == 0){
+			break;
+		}
+	}
+}
+
+猴子吃桃
+猴子第一天摘了若干个桃子，吃了一半，不过瘾，又多吃了一个，第二天早上将剩下的桃子又吃掉了一半，
+并且多吃了一个，每天如此，到第n天再想吃时，发现只剩下1个桃子，问第一天它摘了多少个桃子？
+#include <stdio.h>
+
+int monkeyP(int n);
+int main()
+{
+   int n;
+   scanf("%d",&n);
+   printf("%d\n",monkeyP(n));
+   return 0;
+}
+int monkeyP(int n)
+{
+    if(n==1) return 1;
+    else return (monkeyP(n-1)+1)*2;
+
+}
+
+
+字符串数组逆序输出
+
+#include <stdio.h>
+
+int main()
+{
+    char str[100];
+    gets(str);
+    Inverse(str);
+}
+int Inverse(char str[])
+{
+
+    int i=strlen(str)-1;
+    char *p=&str[i];
+    for(int j=0;j<=i;j++)
+        printf("%c",*(p-j));
+        
+}
+
+字符串子串
+
+#include<stdio.h>
+#include<string.h>
+int main()
+{
+    char a[100];
+    char b[100];
+    gets(a);
+    gets(b);
+    int la,lb;
+    la=strlen(a);
+    lb=strlen(b);
+    int i=0;
+    int j=1;
+    int k=la-lb;
+    for(i=0;i<la;i++)
+    {
+
+        if(a[i]==b[0])
+        {
+            for(j=1;j<lb;j++)
+            {
+                if(a[i+j]!=b[j])
+                    break;
+            }
+            if(j==lb)
+            {
+                printf("%d",i+1);
+                break;
+            }
+        }
+
+        if(i==k+1)
+        {
+            printf("-1");
+            break;
+        }
+
+    }
+    return 0;
+}
+
+
+统计字符
+
+#include <stdio.h>
+
+int main()
+{
+    int m,n,j,k;
+    m=0;n=0;j=0;k=0;
+    char a[100];
+    char c;
+
+    do{
+        gets(a);
+    }while((c=getchar())!=EOF);
+    int s=strlen(a);
+
+    for(int i=0;i<s;i++)
+    {
+        if(a[i]>='a'&&a[i]<='z'||a[i]>='A'&&a[i]<='Z')
+            m++;
+        else if(a[i]>='0'&&a[i]<='9')
+            n++;
+        else if(a[i]==' ')
+            j++;
+        else
+            k++;
+    }
+    printf("英文字符:%d\n数字字符:%d\n",m,n);
+    printf("空格:%d\n其他字符:%d\n",j,k);
+
+    return 0;
+}
+
+
+
+
